@@ -1,0 +1,77 @@
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="script/config.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      socket.on('hhh',(data)=>{
+      var url_string =window.location.href
+      var url = new URL(url_string);
+      var id = parseInt(url.searchParams.get("id"));
+      if(id==data.id){
+      console.log(data.temp)
+      document.getElementById('sahak').innerHTML=data.temp
+      console.log(data.id)
+    }
+})
+socket.on('ggg',(data)=>{
+console.log(data.arr)
+      var url_string =window.location.href
+      var url = new URL(url_string);
+      var id = parseInt(url.searchParams.get("id"));
+	  for (var i = 0; i< data.arr.length; i++) {
+	  console.log(data.arr[i])
+	  	let tr=document.createElement('tr')
+	  	let tb1=document.createElement('td')
+	  	let tb2=document.createElement('td')
+	  	let tb3=document.createElement('td')
+	  	tb1.innerHTML=data.arr[i]['id']
+	  	tb2.innerHTML=data.arr[i]['temp']
+	  	tb3.innerHTML=data.arr[i]['nn']
+	  	tr.appendChild(tb1)
+	  	tr.appendChild(tb2)
+	  	tr.appendChild(tb3)
+	  	document.getElementById('pla').appendChild(tr)
+
+}
+})
+function guu(){
+ var url_string =window.location.href
+      var url = new URL(url_string);
+var ee= document.getElementById('sahak').innerHTML
+var id = parseInt(url.searchParams.get("id"));
+var naa=document.getElementById('ss').value
+socket.emit('savetemp',{temp:ee,id:id,naa:naa})
+}
+
+</script>
+<p id="sahak"></p>
+<p id="anun"></p>
+<p id="temp"></p>
+<input type="text" name="name" placeholder="Anun Azganun" id='ss'>
+<button onclick="guu()">Sand</button>
+<table id='pla'>
+  <tr>
+    <th>GPS</th>
+    <th>Name</th>
+  	<th>Temperature</th>
+  </tr>
+</table>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+

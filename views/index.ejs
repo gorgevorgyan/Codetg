@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>codeTogether</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="shortcut icon" href="img/start.png"/>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script src="/socket.io/socket.io.js"></script>
+      <script type="text/javascript" src="script/config.js"></script>
+      <script type="text/javascript" src="script/socketx.js"></script>
+      <script type="text/javascript" src="script/function.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <div class="flex-split">
+        <div class="flex-split-left">
+          <div class="flex-split-image">
+            <div class="mac-window" id='tq'>
+              <div class="mac-titlebar">
+                <span class="close1 mac-titlebar-button "></span>
+                <span class="min mac-titlebar-button "></span>
+                <span class="max mac-titlebar-button "></span>
+                <div class="title">User 1</div>
+              </div>
+              <div class="console-text" id='qw'></div>
+            </div>
+            <div class="mac-window" id='tt'>
+              <div class="mac-titlebar">
+                <span class="close1 mac-titlebar-button "></span>
+                <span class="min mac-titlebar-button "></span>
+                <span class="max mac-titlebar-button "></span>
+                <div class="title">User 2</div>
+              </div>
+              <div class="console-text" id='kl'></div>
+            </div>
+            <div class="mac-window" id='trt'>
+              <div class="mac-titlebar">
+                <span class="close1 mac-titlebar-button "></span>
+                <span class="min mac-titlebar-button "></span>
+                <span class="max mac-titlebar-button "></span>
+                <div class="title">User ∞</div>
+              </div>
+              <div class="console-text" id='kll'></div>
+            </div>
+          </div>
+        </div>
+        <div class="middle-controls">
+          <a  style="display: none;" id='poqr' onclick="ddo()" class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Back to Home">
+            <svg   class="social-icon" id="fcc-icon" viewBox="1 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414" >
+              <path d="M3.24,7.51c-0.146,0.142-0.146,0.381,0,0.523l5.199,5.193c0.234,0.238,0.633,0.064,0.633-0.262v-2.634c0.105-0.007,0.212-0.011,0.321-0.011c2.373,0,4.302,1.91,4.302,4.258c0,0.957-0.33,1.809-1.008,2.602c-0.259,0.307,0.084,0.762,0.451,0.572c2.336-1.195,3.73-3.408,3.73-5.924c0-3.741-3.103-6.783-6.916-6.783c-0.307,0-0.615,0.028-0.881,0.063V2.575c0-0.327-0.398-0.5-0.633-0.261L3.24,7.51 M4.027,7.771l4.301-4.3v2.073c0,0.232,0.21,0.409,0.441,0.366c0.298-0.056,0.746-0.123,1.184-0.123c3.402,0,6.172,2.709,6.172,6.041c0,1.695-0.718,3.24-1.979,4.352c0.193-0.51,0.293-1.045,0.293-1.602c0-2.76-2.266-5-5.046-5c-0.256,0-0.528,0.018-0.747,0.05C8.465,9.653,8.328,9.81,8.328,9.995v2.074L4.027,7.771z"></path>
+            </svg>
+          </a>
+          <a id='kk'  onclick="dd()" class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Create new room">
+            <svg  class="social-icon" id="fcc-icon" viewBox="2 2 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10"></path>
+            </svg>
+          </a>
+          <a  style="display: none;" id='poqr1' onclick="ddo()" class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Back to Home">
+            <svg   class="social-icon" id="fcc-icon" viewBox="1 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414" >
+              <path d="M3.24,7.51c-0.146,0.142-0.146,0.381,0,0.523l5.199,5.193c0.234,0.238,0.633,0.064,0.633-0.262v-2.634c0.105-0.007,0.212-0.011,0.321-0.011c2.373,0,4.302,1.91,4.302,4.258c0,0.957-0.33,1.809-1.008,2.602c-0.259,0.307,0.084,0.762,0.451,0.572c2.336-1.195,3.73-3.408,3.73-5.924c0-3.741-3.103-6.783-6.916-6.783c-0.307,0-0.615,0.028-0.881,0.063V2.575c0-0.327-0.398-0.5-0.633-0.261L3.24,7.51 M4.027,7.771l4.301-4.3v2.073c0,0.232,0.21,0.409,0.441,0.366c0.298-0.056,0.746-0.123,1.184-0.123c3.402,0,6.172,2.709,6.172,6.041c0,1.695-0.718,3.24-1.979,4.352c0.193-0.51,0.293-1.045,0.293-1.602c0-2.76-2.266-5-5.046-5c-0.256,0-0.528,0.018-0.747,0.05C8.465,9.653,8.328,9.81,8.328,9.995v2.074L4.027,7.771z"></path>
+            </svg>
+          </a>
+          <a id='uu' onclick="ddo1()" class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Join to room">
+            <svg class="social-icon" id="fcc-icon" viewBox="2.5 2 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M14.68,12.621c-0.9,0-1.702,0.43-2.216,1.09l-4.549-2.637c0.284-0.691,0.284-1.457,0-2.146l4.549-2.638c0.514,0.661,1.315,1.09,2.216,1.09c1.549,0,2.809-1.26,2.809-2.808c0-1.548-1.26-2.809-2.809-2.809c-1.548,0-2.808,1.26-2.808,2.809c0,0.38,0.076,0.741,0.214,1.073l-4.55,2.638c-0.515-0.661-1.316-1.09-2.217-1.09c-1.548,0-2.808,1.26-2.808,2.809s1.26,2.808,2.808,2.808c0.9,0,1.702-0.43,2.217-1.09l4.55,2.637c-0.138,0.332-0.214,0.693-0.214,1.074c0,1.549,1.26,2.809,2.808,2.809c1.549,0,2.809-1.26,2.809-2.809S16.229,12.621,14.68,12.621M14.68,2.512c1.136,0,2.06,0.923,2.06,2.06S15.815,6.63,14.68,6.63s-2.059-0.923-2.059-2.059S13.544,2.512,14.68,2.512M5.319,12.061c-1.136,0-2.06-0.924-2.06-2.06s0.923-2.059,2.06-2.059c1.135,0,2.06,0.923,2.06,2.059S6.454,12.061,5.319,12.061M14.68,17.488c-1.136,0-2.059-0.922-2.059-2.059s0.923-2.061,2.059-2.061s2.06,0.924,2.06,2.061S15.815,17.488,14.68,17.488"></path>
+            </svg>
+          </a>
+          <a style="display: none;" id='poqr2' onclick="ddo()" class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Back to Home">
+            <svg   class="social-icon" id="fcc-icon" viewBox="1 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414" ><path d="M3.24,7.51c-0.146,0.142-0.146,0.381,0,0.523l5.199,5.193c0.234,0.238,0.633,0.064,0.633-0.262v-2.634c0.105-0.007,0.212-0.011,0.321-0.011c2.373,0,4.302,1.91,4.302,4.258c0,0.957-0.33,1.809-1.008,2.602c-0.259,0.307,0.084,0.762,0.451,0.572c2.336-1.195,3.73-3.408,3.73-5.924c0-3.741-3.103-6.783-6.916-6.783c-0.307,0-0.615,0.028-0.881,0.063V2.575c0-0.327-0.398-0.5-0.633-0.261L3.24,7.51 M4.027,7.771l4.301-4.3v2.073c0,0.232,0.21,0.409,0.441,0.366c0.298-0.056,0.746-0.123,1.184-0.123c3.402,0,6.172,2.709,6.172,6.041c0,1.695-0.718,3.24-1.979,4.352c0.193-0.51,0.293-1.045,0.293-1.602c0-2.76-2.266-5-5.046-5c-0.256,0-0.528,0.018-0.747,0.05C8.465,9.653,8.328,9.81,8.328,9.995v2.074L4.027,7.771z"></path>
+            </svg>
+          </a>
+          <a id='uu1' onclick="ddo2()"class="circle-button" target='_blank' class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Contact Us">
+            <svg class="social-icon" id="fcc-icon" viewBox="2.05 0 16 18"  fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="flex-split-right">
+          <div id='start'>
+            <h1>Welcome to Codetogether</h1>
+            <h2>Write Code in Real-time with multipy developers</h2>
+            <h3>Don't know how to start? Watch tutorial!</h3>
+            <div class="container">
+              <button class="skewBtn purple">Easy Tutorial</button>
+              <!--<div class="footer">  Codetogether &copy; 2020</div>-->
+            </div>
+          </div> 
+          <div style="display:none" id='join'>
+            <form id='jain' method="POST" action='/join'>
+              <label style="display:block;" for="username">
+                <input type="text" data-toggle="noto" data-placement="top"  name="key" id='username' oninput="co()" maxlength="11" placeholder="Inset key">
+                <input type="text" data-toggle="noto" data-placement="bottom" pattern="[a-zA-Z]+" name="usernames" style="display: none;z-index: 15" id='usernames' oninput="coo()" placeholder="Insert username">
+                <input type="hidden" name="href" style="display: none;" id='href'>
+                <span id="user-availability-status"></span>
+              </label>
+              <input type="submit" name="submit"  style='display: none;margin:1rem;'id ='setik'  value="Join">
+            </form>   
+          </div>
+          <div id="contact">
+            <div class="cont-contactBtn">
+              <div class="back">
+                <h4 style="text-align: center;position: relative;left: -28%;">Cotact From</h4>
+                <iframe name="my_iframe" style="display: none"></iframe>
+                <form class="contact-form" target="my_iframe" id='qorm'>
+                  <input class="gutter" id='names' type="text" placeholder="First Name" autocorrect="off" autocapitalize="none" required>
+                  <input type="text" id='names2' placeholder="Last Name" autocorrect="off" autocapitalize="none" required>
+                  <input class="gutter" id='names3' type="text" placeholder="Subject" autocorrect="off" autocapitalize="none" required>
+                  <input type="email" id='names4' placeholder="Email" autocorrect="off" autocapitalize="none" required>
+                  <textarea name="" id="ff" placeholder="Leave a message" rows="65" style="resize: none;" autocorrect="off" autocapitalize="none" required></textarea>
+                  <input type="submit" value="Send" id='sandemail' onclick="sanding()">
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div id="add" style="display: none">  
+            <select id="lang" onchange="gppg()">
+              <option value="--"> Choose an editor language</option>
+              <option value="Python">Python</option>
+            </select>
+            <iframe name="formDestination" id='frame' style="display: none;" ></iframe>
+            <form action="/add" method="Post">
+              <input type="hidden" id='ou' name="ur">
+              <input id="deh" pattern="[a-zA-Z]+" type="text" style="display:none;width: 100%;" name="nameadmin" oninput="ok()" maxlength="11" placeholder="Insert Username">  
+              <input id='ko' type="submit" name="submit" value="Create Room" style="display: none;">
+            </form> 
+          </div>
+        </div>
+      </div>        
+    </body>
+
+    <script type="text/javascript" src="script/animation.js"></script>
+    <script type="text/javascript">    </script>
+  </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+
+
+    <meta charset="utf-8">
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="script/config.js"></script>
+    <link rel="stylesheet" href="css/menu.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <title>Python Editor</title>
+    <link rel="shortcut icon" href="img/python.png"/>
+  </head>
+  <h1 id="tivmy" style="display: none" ><%=count%></h1>
+  <h1 id="array" style="display: none" ><%=array%></h1>
+  <h1 id="jamanak" style="display: none" ><%=time%></h1>
+  <script type="text/javascript">
+    var url_string =window.location.href
+    var url = new URL(url_string);
+    var de = url.searchParams.get("key");
+    var nameofuser = url.searchParams.get("user");
+    var tivmy=document.getElementById('tivmy').innerHTML
+    var arr=document.getElementById('array').innerHTML.split(',');
+  </script>
+  <body>
+    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+        <a class="navbar-brand" id='hisname' href="#"><script>document.write(nameofuser);</script>  </a>
+          </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+        <li><a href="#" onclick="run()" data-target="#myNavbar" data-toggle="collapse"><span class="glyphicon glyphicon-play"></span>Run</a></li>
+        <li><a href="#" onclick="down()"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        <li style="margin:-5px"><a id='fe'  href="#">Key:<input type="text" id='hide' name=""readonly="readonly"><i id='c' onclick="copy()" class='fas fa-copy'></i></a>
+        <li>
+          <a href="#"><span class="glyphicon glyphicon-time"></span>
+            <div id="countdown">
+              <div id='tiles' class="color-full"></div>
+            </div>
+          </a>
+      </li>        
+      <li>
+        <a href="#" onclick="drop()" class="dropbtn"><span class="glyphicon glyphicon-user"></span>Participants</a>
+          <div id="myDropdown" class="dropdown-content"  id='eeeeee'>
+            <a href="#" id='tyup' style="background: black;color: white;"><script>document.write(tivmy);</script> Joined</a>
+            <div style="overflow: auto;max-height: 250px;" id='klo'>
+             <script type="text/javascript">
+               for (var i = 0; i < arr.length; i++) {
+                 document.write("<a href='#'>"+arr[i]+"</a>")
+               }
+             </script> 
+             </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>  
+    <div class="content">
+      <div class="live">
+        <div class="liveText">
+          <div id="editor" onclick="cose()"><%=textpython%></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="compiler">
+        <div id='setion1' >
+          <a href="#" onclick="cose()"  ><span id="close"  class="glyphicon glyphicon-remove"></span></a>
+          <li id="next"><a href="#" id='istak' onclick="cl()"><span  class="glyphicon glyphicon-ban-circle"></span></a></li>
+          <h1 id='p'>Shell</h1>
+          </div>
+          <div id="out"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      let socketroom = io(mms+'?room=<%=key%>&user=<%=username%>')
+      let audio = new Audio()
+      audio.src = 'audio/sms-alert-3-daniel_simon.wav'
+      document.onkeyup = (e)=>{
+        var code = editor.getValue();
+          socketroom.emit('python',{char:code,mykey:de,myname:nameofuser})
+        }
+        socketroom.on('text',(text)=>{
+          if(text.yourkey==de && nameofuser!=text.yourname){
+          code=text.cods
+          var ee=editor.getCursorPosition()
+          editor.setValue(code);
+          editor.clearSelection();
+          editor.selection.moveTo(ee.row, ee.column)
+        }
+        })
+
+
+      document.getElementById('hide').value=de
+      document.getElementById('out').innerHTML+='<p class="kanach">root@'+nameofuser+':~$<span id="margat">_</span></p>'
+    </script>
+    <script src="script/jquery-linedtextarea.js"></script>
+   <!-- <script type="text/javascript" src="script/animation.js"></script>-->
+    <script type="text/javascript" src="script/socketx.js"></script>
+    <script type="text/javascript" src="script/function.js"></script> 
+  </body>
+</html>
+<script type="text/javascript">
+  var iop=document.getElementById('jamanak').innerHTML
+  timeout(iop)
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/python");
+function drop() {
+  document.getElementById("myDropdown").style.display='block';
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    document.getElementById("myDropdown").style.display='none';
+  }
+}
+</script>
+<style type="text/css">
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+</style>
+<script type="text/javascript">
+
+
+
+
+</script>

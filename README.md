@@ -1,2 +1,2 @@
 # Codetg
-Real time code sharing application+compiler
+Real-time code sharing application + compiler
