@@ -1,5 +1,5 @@
 # Codetg
 Real-time code sharing application + compiler
 Demo
-![Alt Text](https://www.dropbox.com/s/g5b231ns356urty/yolo.gif?dl=0)
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
