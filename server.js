@@ -426,8 +426,8 @@ io.on('connection',(socket)=>{
         }
     });
     var mailOptions = {
-      from: 'sandmailnow2020@gmail.com',
-      to: 'thegorgevorgyan@gmail.com',
+      from: '**************************',
+      to: '***************************',
       subject: subject,
       text: "Name:"+firstname+' '+"Lastname:"+lastname+' '+"email"+email+" "+messagetext
     };
