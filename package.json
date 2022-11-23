@@ -26,7 +26,7 @@
     "rapydscript": "^0.5.61",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.5.0",
     "system-commands": "^1.1.7"
   },
   "devDependencies": {},
